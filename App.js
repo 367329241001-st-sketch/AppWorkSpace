@@ -1,186 +1,31 @@
+/**
+ * @file App.js
+ * @description Root entry point for the React Native / Expo application.
+ *
+ * Configures global app infrastructure including gesture handling support,
+ * top-level navigation container, status bar appearance, and the main stack navigator.
+ */
+
+import 'react-native-gesture-handler';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import RootStack from './navigation/RootStack';
 
-import {   NavigationContainer  } from '@react-navigation/native';
-
-import {  createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-import {   Ionicons} from '@expo/vector-icons';
-
-
-// ========================================
-// SCREEN
-// ========================================
-
-import HomeScreen   from './screens/HomeScreen';
-
-import NavigationStack   from './navigation/NavigationStack';
-
-import AboutScreen   from './screens/AboutScreen';
-
-
-// ========================================
-// STYLE
-// ========================================
-
-import styles, {   COLORS } from './styles/ProjectStyles';
-
-
-// ========================================
-// CREATE TAB
-// ========================================
-
-const Tab = createBottomTabNavigator();
-
-
-// ========================================
-// APP
-// ========================================
-
+/**
+ * Root Application Component.
+ *
+ * Initializes the navigation tree wrapped in {@link NavigationContainer},
+ * sets up the global light status bar theme, and renders the primary navigation stack.
+ *
+ * @returns {React.ReactNode} The main application component hierarchy.
+ */
 export default function App() {
-
   return (
-
     <NavigationContainer>
-
-      <Tab.Navigator
-
-        initialRouteName="Home"
-
-        screenOptions={({ route }) => ({
-
-          headerTitleAlign: 'center',
-
-          tabBarActiveTintColor:
-            COLORS.primary,
-
-          tabBarInactiveTintColor:
-            COLORS.textSecondary,
-
-          tabBarStyle:
-            styles.tabBar,
-
-
-          // =================================
-          // ICON
-          // =================================
-
-          tabBarIcon: ({
-            focused,
-            color,
-            size
-          }) => {
-
-            let iconName;
-
-
-            if (route.name === 'Home') {
-
-              iconName = focused
-                ? 'home'
-                : 'home-outline';
-
-            }
-
-
-            else if (
-              route.name === 'Navigation'
-            ) {
-
-              iconName = focused
-                ? 'navigate'
-                : 'navigate-outline';
-
-            }
-
-
-            else if (
-              route.name === 'About'
-            ) {
-
-              iconName = focused
-                ? 'information-circle'
-                : 'information-circle-outline';
-
-            }
-
-
-            return (
-
-              <Ionicons
-
-                name={iconName}
-
-                size={size}
-
-                color={color}
-
-              />
-
-            );
-
-          },
-
-        })}
-
-      >
-
-
-        <Tab.Screen
-
-          name="Home"
-
-          component={HomeScreen}
-
-          options={{
-
-            title: 'หน้าหลัก',
-
-            tabBarLabel: 'Home',
-
-          }}
-
-        />
-
-
-        <Tab.Screen
-
-          name="Navigation"
-
-          component={NavigationStack}
-
-          options={{
-
-            headerShown: false,
-
-            tabBarLabel: 'Navigation',
-
-          }}
-
-        />
-
-
-        <Tab.Screen
-
-          name="About"
-
-          component={AboutScreen}
-
-          options={{
-
-            title: 'เกี่ยวกับ',
-
-            tabBarLabel: 'About',
-
-          }}
-
-        />
-
-
-      </Tab.Navigator>
-
-
+      <StatusBar style="light" />
+      <RootStack />
     </NavigationContainer>
-
   );
-
 }
+

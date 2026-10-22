@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app_tab_stack",
-    "slug": "snack-50487987-aa87-41d4-b3d3-3bb84c6e7ecd",
+    "name": "appworkspace_hunter",
+    "slug": "snack-d1d0ab2e-a974-4a17-8f9a-17a4c79e1e1f",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,16 +20,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.watcharee.p.snack50487987aa8741d4b3d33bb84c6e7ecd"
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "d065c043-3b26-4f12-b6af-c81778c2db7d"
-      }
     }
   }
 }
